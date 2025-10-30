@@ -6,6 +6,15 @@
     cogden@cs50.harvard.edu
 ]]
 
+
+-- Zelda [[
+-- Have to kill enemies before you advance
+-- More enemies 
+-- Counter for how many levels passed
+-- Longer sword
+-- Better hitboxes
+-- Better music
+
 require 'src/Dependencies'
 
 function love.load()
@@ -19,7 +28,6 @@ function love.load()
         resizable = true
     })
 
--- sigma
 
     love.graphics.setFont(gFonts['small'])
 
