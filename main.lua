@@ -19,6 +19,8 @@ function love.load()
         resizable = true
     })
 
+-- sigma
+
     love.graphics.setFont(gFonts['small'])
 
     gStateMachine = StateMachine {
