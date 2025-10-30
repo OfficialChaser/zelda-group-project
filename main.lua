@@ -12,7 +12,7 @@
 -- More enemies 
 -- Counter for how many levels passed
 -- Longer sword
--- Better hitboxes
+-- Better hitboxes.
 -- Better music
 
 require 'src/Dependencies'
