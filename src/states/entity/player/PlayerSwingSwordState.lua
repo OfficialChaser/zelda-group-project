@@ -21,23 +21,23 @@ function PlayerSwingSwordState:init(player, dungeon)
     local hitboxX, hitboxY, hitboxWidth, hitboxHeight
 
     if direction == 'left' then
-        hitboxWidth = 8
-        hitboxHeight = 16
+        hitboxWidth = 12
+        hitboxHeight = 20
         hitboxX = self.player.x - hitboxWidth
         hitboxY = self.player.y + 2
     elseif direction == 'right' then
-        hitboxWidth = 8
-        hitboxHeight = 16
+        hitboxWidth = 12
+        hitboxHeight = 20
         hitboxX = self.player.x + self.player.width
         hitboxY = self.player.y + 2
     elseif direction == 'up' then
-        hitboxWidth = 16
-        hitboxHeight = 8
+        hitboxWidth = 20
+        hitboxHeight = 12
         hitboxX = self.player.x
         hitboxY = self.player.y - hitboxHeight
     else
-        hitboxWidth = 16
-        hitboxHeight = 8
+        hitboxWidth = 20
+        hitboxHeight = 12
         hitboxX = self.player.x
         hitboxY = self.player.y + self.player.height
     end
