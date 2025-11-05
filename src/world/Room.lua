@@ -42,7 +42,6 @@ function Room:init(player, roomCounter)
     self.adjacentOffsetX = 0
     self.adjacentOffsetY = 0
 
-        self:spawnHeart(player.x, player.y)
 end
 
 --[[
@@ -116,9 +115,14 @@ function Room:spawnHeart(x, y)
     local heart = GameObject(GAME_OBJECT_DEFS['heart'], x, y)
 
     heart.onCollide = function()
-        if heart.state == 'spawned' then
-            -- TODO: what happens when player picks up the heart
+        -- remove this heart from the room's objects table
+        for k, object in pairs(self.objects) do
+            if object == heart then
+                table.remove(self.objects, k)
+                break
+            end
         end
+        self.player:heal(2)
     end
 
     -- add the heart to the room's objects so it gets updated/rendered
@@ -178,6 +182,7 @@ function Room:update(dt)
         if entity.health <= 0 and entity.dead == false then
             self.total_enemies = self.total_enemies - 1
             entity.dead = true
+            if math.random(10) == 1 then self:spawnHeart(entity.x, entity.y) end
         elseif not entity.dead then
             entity:processAI({room = self}, dt)
             entity:update(dt)
