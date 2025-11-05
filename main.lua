@@ -49,6 +49,10 @@ function love.resize(w, h)
 end
 
 function love.keypressed(key)
+    if key == "1" then
+        print("test")
+        toggleDebug = not toggleDebug
+    end
     love.keyboard.keysPressed[key] = true
 end
 

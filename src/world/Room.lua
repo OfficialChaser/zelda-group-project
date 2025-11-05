@@ -41,6 +41,8 @@ function Room:init(player, roomCounter)
     -- used for drawing when this room is the next room, adjacent to the active
     self.adjacentOffsetX = 0
     self.adjacentOffsetY = 0
+
+        self:spawnHeart(player.x, player.y)
 end
 
 --[[
@@ -110,6 +112,19 @@ function Room:spawnSwitch()
     table.insert(self.objects, switch)
 end
 
+function Room:spawnHeart(x, y)
+    local heart = GameObject(GAME_OBJECT_DEFS['heart'], x, y)
+
+    heart.onCollide = function()
+        if heart.state == 'spawned' then
+            -- TODO: what happens when player picks up the heart
+        end
+    end
+
+    -- add the heart to the room's objects so it gets updated/rendered
+    table.insert(self.objects, heart)
+end
+
 --[[
     Generates the walls and floors of the room, randomizing the various varieties
     of said tiles for visual variety.
@@ -151,7 +166,6 @@ function Room:generateWallsAndFloors()
 end
 
 function Room:update(dt)
-    print(self.total_enemies)
     -- don't update anything if we are sliding to another room (we have offsets)
     if self.adjacentOffsetX ~= 0 or self.adjacentOffsetY ~= 0 then return end
 

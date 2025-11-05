@@ -8,6 +8,8 @@
 
 PlayState = Class{__includes = BaseState}
 
+toggleDebug = false
+
 function PlayState:init()
     self.player = Player {
         animations = ENTITY_DEFS['player'].animations,

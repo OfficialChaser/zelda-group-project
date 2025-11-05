@@ -26,5 +26,22 @@ GAME_OBJECT_DEFS = {
     },
     ['pot'] = {
         -- TODO
+    },
+    ['heart'] = {
+        type = 'heart',
+        texture = 'hearts',
+        frame = 1,
+        width = 16,
+        height = 16,
+        solid = false,
+        defaultState = 'spawning',
+        states = {
+            ['spawning'] = {
+                frame = 1
+            },
+            ['spawned'] = {
+                frame = 4
+            }
+        }
     }
 }
