@@ -21,6 +21,7 @@ function PlayState:init()
 
         -- one heart == 2 health
         health = 6,
+        roomCounter = 0,
 
         -- rendering and collision offset for spaced sprites
         offsetY = 5
@@ -69,4 +70,8 @@ function PlayState:render()
         
         healthLeft = healthLeft - 2
     end
+
+    love.graphics.setFont(gFonts['small'])
+    love.graphics.printf('Rooms Cleared: ' .. tostring(self.player.roomCounter), 0, 2,
+        VIRTUAL_WIDTH - 4, 'right')
 end

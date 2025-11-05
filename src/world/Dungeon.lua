@@ -123,6 +123,7 @@ function Dungeon:finishShifting()
 
     -- point to transitioned room as the new active room, pointing to an empty room next
     self.currentRoom = self.nextRoom
+    self.player.roomCounter = self.player.roomCounter + 1
     self.nextRoom = nil
 
     -- this room (previously the off-screen room) should now be in the center, not offset

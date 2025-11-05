@@ -7,12 +7,12 @@
 ]]
 
 
--- Zelda [[
+-- Zelda 
 -- Have to kill enemies before you advance
 -- More enemies 
--- Counter for how many levels passed
+-- Counter for how many levels passed (done)
 -- Longer sword
--- Better hitboxes.
+-- Better hitboxes
 -- Better music
 
 require 'src/Dependencies'

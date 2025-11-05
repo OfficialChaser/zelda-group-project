@@ -15,24 +15,40 @@ function PlayerWalkState:init(player, dungeon)
     -- render offset for spaced character sprite; negated in render function of state
     self.entity.offsetY = 5
     self.entity.offsetX = 0
+
+    prevKeys = {}
 end
 
 function PlayerWalkState:update(dt)
-    if love.keyboard.isDown('left') then
-        self.entity.direction = 'left'
-        self.entity:changeAnimation('walk-left')
-    elseif love.keyboard.isDown('right') then
-        self.entity.direction = 'right'
-        self.entity:changeAnimation('walk-right')
-    elseif love.keyboard.isDown('up') then
-        self.entity.direction = 'up'
-        self.entity:changeAnimation('walk-up')
-    elseif love.keyboard.isDown('down') then
-        self.entity.direction = 'down'
-        self.entity:changeAnimation('walk-down')
+    local keys = {}
+    if love.keyboard.isDown('left') or love.keyboard.isDown('a') then
+        table.insert(keys, 'left')
+    end
+    if love.keyboard.isDown('right') or love.keyboard.isDown('d') then
+        table.insert(keys, 'right')
+    end
+    if love.keyboard.isDown('up') or love.keyboard.isDown('w') then
+        table.insert(keys, 'up')
+    end
+    if love.keyboard.isDown('down') or love.keyboard.isDown('s') then
+        table.insert(keys, 'down')
+    end
+
+    if #keys > 0 then
+        local lastKey = keys[#keys]
+        self.entity.direction = lastKey
+        self.entity:changeAnimation('walk-' .. lastKey)
     else
         self.entity:changeState('idle')
     end
+    prevKeys = keys
+
+    -- Print the contents of the keys table (DEBUG)
+    local keyString = "Keys pressed: "
+    for i, key in ipairs(keys) do
+        keyString = keyString .. key .. " "
+    end
+    print(keyString)
 
     if love.keyboard.wasPressed('space') then
         self.entity:changeState('swing-sword')
