@@ -12,9 +12,9 @@
 -- More enemies (done sorta)
 -- Counter for how many levels passed (done)
 -- Enemy variability (done sorta)
--- Longer sword
--- Better hitboxes
--- Better music
+-- Longer sword (done)
+-- Better hitboxes 
+-- Better music 
 
 require 'src/Dependencies'
 
