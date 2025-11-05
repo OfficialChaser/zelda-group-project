@@ -8,7 +8,7 @@
 
 Room = Class{}
 
-function Room:init(player)
+function Room:init(player, roomCounter)
     self.width = MAP_WIDTH
     self.height = MAP_HEIGHT
 
@@ -17,11 +17,12 @@ function Room:init(player)
 
     -- entities in the room
     self.entities = {}
-    self:generateEntities()
-
+    self.total_enemies = 2
+    self:generateEntities(roomCounter)
+    
     -- game objects in the room
     self.objects = {}
-    self:generateObjects()
+    self.spawnedSwitch = false
 
     -- doorways that lead to other dungeon rooms
     self.doorways = {}
@@ -45,10 +46,12 @@ end
 --[[
     Randomly creates an assortment of enemies for the player to fight.
 ]]
-function Room:generateEntities()
+function Room:generateEntities(roomsCleared)
     local types = {'skeleton', 'slime', 'bat', 'ghost', 'spider'}
 
-    for i = 1, 10 do
+    if roomsCleared then self.total_enemies = self.total_enemies + roomsCleared end
+
+    for i = 1, self.total_enemies do
         local type = types[math.random(#types)]
 
         table.insert(self.entities, Entity {
@@ -64,7 +67,8 @@ function Room:generateEntities()
             width = 16,
             height = 16,
 
-            health = 1
+            
+            health = ENTITY_DEFS[type].health
         })
 
         self.entities[i].stateMachine = StateMachine {
@@ -79,7 +83,7 @@ end
 --[[
     Randomly creates an assortment of obstacles for the player to navigate around.
 ]]
-function Room:generateObjects()
+function Room:spawnSwitch()
     local switch = GameObject(
         GAME_OBJECT_DEFS['switch'],
         math.random(MAP_RENDER_OFFSET_X + TILE_SIZE,
@@ -147,7 +151,7 @@ function Room:generateWallsAndFloors()
 end
 
 function Room:update(dt)
-    
+    print(self.total_enemies)
     -- don't update anything if we are sliding to another room (we have offsets)
     if self.adjacentOffsetX ~= 0 or self.adjacentOffsetY ~= 0 then return end
 
@@ -157,7 +161,8 @@ function Room:update(dt)
         local entity = self.entities[i]
 
         -- remove entity from the table if health is <= 0
-        if entity.health <= 0 then
+        if entity.health <= 0 and entity.dead == false then
+            self.total_enemies = self.total_enemies - 1
             entity.dead = true
         elseif not entity.dead then
             entity:processAI({room = self}, dt)
@@ -183,6 +188,11 @@ function Room:update(dt)
         if self.player:collides(object) then
             object:onCollide()
         end
+    end
+
+    if self.total_enemies == 0 and not self.spawnedSwitch then 
+        self:spawnSwitch()
+        self.spawnedSwitch = true
     end
 end
 

@@ -8,9 +8,10 @@
 
 
 -- Zelda 
--- Have to kill enemies before you advance
--- More enemies 
+-- Have to kill enemies before you advance  (done)
+-- More enemies (done sorta)
 -- Counter for how many levels passed (done)
+-- Enemy variability (done sorta)
 -- Longer sword
 -- Better hitboxes
 -- Better music
@@ -38,8 +39,8 @@ function love.load()
     }
     gStateMachine:change('start')
 
-    gSounds['music']:setLooping(true)
-    gSounds['music']:play()
+    --gSounds['music']:setLooping(true)
+    --gSounds['music']:play()
     love.keyboard.keysPressed = {}
 end
 

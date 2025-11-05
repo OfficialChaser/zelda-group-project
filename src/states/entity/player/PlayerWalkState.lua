@@ -44,11 +44,11 @@ function PlayerWalkState:update(dt)
     prevKeys = keys
 
     -- Print the contents of the keys table (DEBUG)
-    local keyString = "Keys pressed: "
-    for i, key in ipairs(keys) do
-        keyString = keyString .. key .. " "
-    end
-    print(keyString)
+    --local keyString = "Keys pressed: "
+    --for i, key in ipairs(keys) do
+        --keyString = keyString .. key .. " "
+    --end
+    --print(keyString)
 
     if love.keyboard.wasPressed('space') then
         self.entity:changeState('swing-sword')

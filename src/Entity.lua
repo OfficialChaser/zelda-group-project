@@ -64,6 +64,7 @@ end
 
 function Entity:damage(dmg)
     self.health = self.health - dmg
+    self:goInvulnerable(0.5)
 end
 
 function Entity:goInvulnerable(duration)

@@ -23,7 +23,6 @@ function EntityWalkState:init(entity, dungeon)
 end
 
 function EntityWalkState:update(dt)
-    
     -- assume we didn't hit a wall
     self.bumped = false
 
