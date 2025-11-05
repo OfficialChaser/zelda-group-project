@@ -14,7 +14,7 @@
 -- Enemy variability (done sorta)
 -- Longer sword
 -- Better hitboxes
--- Better music
+-- Better music (done)
 
 require 'src/Dependencies'
 
