@@ -8,6 +8,10 @@
 
 GameOverState = Class{__includes = BaseState}
 
+function GameOverState:enter(params)
+    self.roomCounter = params
+end
+
 function GameOverState:update(dt)
     if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
         gStateMachine:change('start')
@@ -26,4 +30,8 @@ function GameOverState:render()
     love.graphics.setFont(gFonts['zelda-small'])
     love.graphics.printf('Press Enter', 0, VIRTUAL_HEIGHT / 2 + 16, VIRTUAL_WIDTH, 'center')
     love.graphics.setColor(1, 1, 1, 1)
+
+    love.graphics.setFont(gFonts['medium'])
+    love.graphics.printf('Rooms passed: ' .. tostring(self.roomCounter), 0, VIRTUAL_HEIGHT / 2 + 70, VIRTUAL_WIDTH, 'center')
+    
 end
