@@ -69,6 +69,7 @@ end
 
 function Entity:heal(health)
     self.health = self.health + health
+    gSounds['health-gain']:play()
     if self.health > 6 then self.health = 6 end
     print(self.health)
 end
