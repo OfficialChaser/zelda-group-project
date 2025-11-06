@@ -34,13 +34,10 @@ GAME_OBJECT_DEFS = {
         width = 16,
         height = 16,
         solid = false,
-        defaultState = 'spawning',
+        defaultState = 'spawned',
         states = {
-            ['spawning'] = {
-                frame = 1
-            },
             ['spawned'] = {
-                frame = 4
+                frame = 5
             }
         }
     }

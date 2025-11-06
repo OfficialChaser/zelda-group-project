@@ -67,6 +67,12 @@ function Entity:damage(dmg)
     self:goInvulnerable(0.5)
 end
 
+function Entity:heal(health)
+    self.health = self.health + health
+    if self.health > 6 then self.health = 6 end
+    print(self.health)
+end
+
 function Entity:goInvulnerable(duration)
     self.invulnerable = true
     self.invulnerableDuration = duration
