@@ -12,9 +12,17 @@
 -- More enemies (done sorta)
 -- Counter for how many levels passed (done)
 -- Enemy variability (done sorta)
+<<<<<<< HEAD
 -- Longer sword (done)
 -- Better hitboxes 
 -- Better music 
+=======
+-- Longer sword (done sorta)
+-- Better music (done)
+-- Rooms can have modifiers like enemies have double speed, double health, or introduce enemy mutations
+-- Achievements: "Haha, I don't need this": Collect a heart when you're at full HP, "You were doomed from the start": die for the first time, maybe a super rare collectible achievement
+-- Score at the end
+>>>>>>> f1b21cb491a6689b2f61f8cff53bf0441eb997c3
 
 require 'src/Dependencies'
 
