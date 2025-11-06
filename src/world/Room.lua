@@ -17,7 +17,7 @@ function Room:init(player, roomCounter)
 
     -- entities in the room
     self.entities = {}
-    self.total_enemies = 4
+    self.total_enemies = 5
     self:generateEntities(roomCounter)
     
     -- game objects in the room
@@ -50,7 +50,7 @@ end
 function Room:generateEntities(roomsCleared)
     local types = {'skeleton', 'slime', 'bat', 'ghost', 'spider'}
 
-    if roomsCleared then self.total_enemies = self.total_enemies + roomsCleared + 1 end
+    if roomsCleared then self.total_enemies = self.total_enemies + roomsCleared end
 
     for i = 1, self.total_enemies do
         local type = types[math.random(#types)]
