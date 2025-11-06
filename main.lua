@@ -15,11 +15,9 @@
 -- Longer sword (done)
 -- Better hitboxes (impossible)
 -- Better music (done)
--- Longer sword (done sorta)
--- Better music (done)
 -- Rooms can have modifiers like enemies have double speed, double health, or introduce enemy mutations
 -- Achievements: "Haha, I don't need this": Collect a heart when you're at full HP, "You were doomed from the start": die for the first time, maybe a super rare collectible achievement
--- Score at the end
+-- Score at the end (done)
 
 require 'src/Dependencies'
 
