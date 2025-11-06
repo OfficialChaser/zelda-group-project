@@ -196,6 +196,7 @@ function Room:update(dt)
 
             if self.player.health == 0 then
                 gStateMachine:change('game-over', self.player.roomCounter)
+                gSounds['game-over']:play()
             end
         end
     end
