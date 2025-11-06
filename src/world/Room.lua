@@ -195,12 +195,7 @@ function Room:update(dt)
             self.player:goInvulnerable(1.5)
 
             if self.player.health == 0 then
-<<<<<<< HEAD
                 gStateMachine:change('game-over', self.player.roomCounter)
-=======
-                gStateMachine:change('game-over')
-                gSounds['game-over']:play()
->>>>>>> a7b650061f436c9ff3454ed5b4f41708ddcad450
             end
         end
     end
