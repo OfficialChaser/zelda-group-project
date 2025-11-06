@@ -17,27 +17,39 @@ function PlayerWalkState:init(player, dungeon)
     self.entity.offsetX = 0
 
     prevKeys = {}
+
+
 end
 
 function PlayerWalkState:update(dt)
-    local keys = {}
     if love.keyboard.isDown('left') or love.keyboard.isDown('a') then
-        table.insert(keys, 'left')
+        self.entity.movingLeft = true
+        self.entity.direction = 'left'
+    else
+        self.entity.movingLeft = false
     end
     if love.keyboard.isDown('right') or love.keyboard.isDown('d') then
-        table.insert(keys, 'right')
+        movingRight = true
+        self.entity.movingRight = true
+        self.entity.direction = "right"
+    else
+        self.entity.movingRight = false
     end
     if love.keyboard.isDown('up') or love.keyboard.isDown('w') then
-        table.insert(keys, 'up')
+        self.entity.movingUp = true
+        self.entity.direction = 'up'
+    else
+        self.entity.movingUp = false
     end
     if love.keyboard.isDown('down') or love.keyboard.isDown('s') then
-        table.insert(keys, 'down')
+        self.entity.movingDown = true
+        self.entity.direction = 'down'
+    else
+        self.entity.movingDown = false
     end
 
-    if #keys > 0 then
-        local lastKey = keys[#keys]
-        self.entity.direction = lastKey
-        self.entity:changeAnimation('walk-' .. lastKey)
+    if self.entity.movingLeft or self.entity.movingRight or self.entity.movingUp or self.entity.movingDown then
+        self.entity:changeAnimation('walk-' .. self.entity.direction)
     else
         self.entity:changeState('idle')
     end
