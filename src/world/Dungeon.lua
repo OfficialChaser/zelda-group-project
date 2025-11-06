@@ -115,6 +115,7 @@ end
     current room.
 ]]
 function Dungeon:finishShifting()
+    self.player:goInvulnerable(1.5)
 
     -- reset camera and deactivate shifting to avoid translation
     self.cameraX = 0
