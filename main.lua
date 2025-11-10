@@ -18,6 +18,8 @@
 -- Rooms can have modifiers like enemies have double speed, double health, or introduce enemy mutations
 -- Achievements: "Haha, I don't need this": Collect a heart when you're at full HP, "You were doomed from the start": die for the first time, maybe a super rare collectible achievement
 -- Score at the end (done)
+-- make bowling ball indestructible
+-- ball cooldown in gui
 love.graphics.setDefaultFilter('nearest', 'nearest')
 require 'src/Dependencies'
 
@@ -53,7 +55,6 @@ end
 
 function love.keypressed(key)
     if key == "1" then
-        print("test")
         toggleDebug = not toggleDebug
     end
     love.keyboard.keysPressed[key] = true

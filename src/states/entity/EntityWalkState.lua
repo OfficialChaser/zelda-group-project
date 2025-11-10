@@ -36,7 +36,6 @@ function EntityWalkState:update(dt)
         end
     end
     if self.entity.direction == 'right' or self.entity.movingRight then
-        print("RIGHT")
         self.entity.x = self.entity.x + self.entity.walkSpeed * dt
 
         if self.entity.x + self.entity.width >= VIRTUAL_WIDTH - TILE_SIZE * 2 then
@@ -45,7 +44,6 @@ function EntityWalkState:update(dt)
         end
     end
     if self.entity.direction == 'up' or self.entity.movingUp then
-        print("UP")
         self.entity.y = self.entity.y - self.entity.walkSpeed * dt
 
         if self.entity.y <= MAP_RENDER_OFFSET_Y + TILE_SIZE - self.entity.height / 2 then 
@@ -54,7 +52,6 @@ function EntityWalkState:update(dt)
         end
     end
     if self.entity.direction == 'down' or self.entity.movingDown then
-        print("DOWN")
         self.entity.y = self.entity.y + self.entity.walkSpeed * dt
 
         local bottomEdge = VIRTUAL_HEIGHT - (VIRTUAL_HEIGHT - MAP_HEIGHT * TILE_SIZE) 

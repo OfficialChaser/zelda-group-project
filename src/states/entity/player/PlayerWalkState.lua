@@ -60,7 +60,7 @@ function PlayerWalkState:update(dt)
     --for i, key in ipairs(keys) do
         --keyString = keyString .. key .. " "
     --end
-    --print(keyString)
+    --keyString)
 
     if love.keyboard.wasPressed('space') then
         self.entity:changeState('swing-sword')
