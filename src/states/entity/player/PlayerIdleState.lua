@@ -53,6 +53,7 @@ function PlayerIdleState:update(dt)
                 dy = dy,
                 type = 'rock'
             })
+            if gSounds['bowler'] then gSounds['bowler']:play() end
             self.entity.throwTimer = self.entity.throwCooldown
         end
     end

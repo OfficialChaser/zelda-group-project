@@ -82,4 +82,5 @@ gSounds = {
     ['health-gain'] = love.audio.newSource('sounds/health_gain.wav', 'static'),
     ['game-over'] = love.audio.newSource('sounds/game_over.mp3', 'static'),
     ['door'] = love.audio.newSource('sounds/door.wav', 'static')
+    ,['bowler'] = love.audio.newSource('sounds/bowler.mp3', 'static')
 }
