@@ -17,6 +17,8 @@ require 'src/Hitbox'
 require 'src/Player'
 require 'src/StateMachine'
 require 'src/Util'
+require 'src/projectile_defs'
+require 'src/Projectile'
 
 require 'src/world/Doorway'
 require 'src/world/Dungeon'
@@ -45,6 +47,9 @@ gTextures = {
     ['entities'] = love.graphics.newImage('graphics/entities.png')
 }
 
+-- optional rock texture (16x16)
+gTextures['rock'] = love.graphics.newImage('graphics/rock.png')
+
 gFrames = {
     ['tiles'] = GenerateQuads(gTextures['tiles'], 16, 16),
     ['character-walk'] = GenerateQuads(gTextures['character-walk'], 16, 32),
@@ -53,6 +58,11 @@ gFrames = {
     ['hearts'] = GenerateQuads(gTextures['hearts'], 16, 16),
     ['switches'] = GenerateQuads(gTextures['switches'], 16, 18)
 }
+
+-- add rock texture quads if rock texture exists
+if gTextures['rock'] then
+    gFrames['rock'] = GenerateQuads(gTextures['rock'], 16, 16)
+end
 
 gFonts = {
     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),

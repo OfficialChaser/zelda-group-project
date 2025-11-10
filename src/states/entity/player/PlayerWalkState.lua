@@ -66,6 +66,31 @@ function PlayerWalkState:update(dt)
         self.entity:changeState('swing-sword')
     end
 
+    -- throw rock with 'f'
+    if love.keyboard.wasPressed('f') then
+        local dir = self.entity.direction
+        local dx, dy = 0, 0
+        if dir == 'left' then dx = -1
+        elseif dir == 'right' then dx = 1
+        elseif dir == 'up' then dy = -1
+        else dy = 1 end
+
+        if self.entity.throwTimer == 0 then
+            local room = self.dungeon.currentRoom
+            if not room.projectiles then room.projectiles = {} end
+            local px = self.entity.x + self.entity.width / 2 - 8
+            local py = self.entity.y + self.entity.height / 2 - 8
+            table.insert(room.projectiles, Projectile {
+                x = px,
+                y = py,
+                dx = dx,
+                dy = dy,
+                type = 'rock'
+            })
+            self.entity.throwTimer = self.entity.throwCooldown
+        end
+    end
+
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
 

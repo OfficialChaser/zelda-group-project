@@ -95,6 +95,7 @@ end
 
 function EntityWalkState:render()
     local anim = self.entity.currentAnimation
+    if not anim then return end
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
         math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY))
     

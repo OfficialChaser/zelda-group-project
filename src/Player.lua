@@ -12,10 +12,17 @@ function Player:init(def)
     Entity.init(self, def)
     self:goInvulnerable(1.5)
     self.roomCounter = def.roomCounter or 0
+    -- cooldown for throwing rocks (seconds)
+    self.throwCooldown = 1.5
+    self.throwTimer = 0
 end
 
 function Player:update(dt)
     Entity.update(self, dt)
+    -- decrement throw timer
+    if self.throwTimer > 0 then
+        self.throwTimer = math.max(0, self.throwTimer - dt)
+    end
 end
 
 function Player:collides(target)

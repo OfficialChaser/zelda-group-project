@@ -9,9 +9,9 @@
 
 -- Zelda 
 -- Have to kill enemies before you advance  (done)
--- More enemies (done sorta)
+-- More enemies (done)
 -- Counter for how many levels passed (done)
--- Enemy variability (done sorta)
+-- Enemy variability (done)
 -- Longer sword (done)
 -- Better hitboxes (impossible)
 -- Better music (done)

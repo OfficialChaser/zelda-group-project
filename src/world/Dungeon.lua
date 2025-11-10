@@ -140,7 +140,9 @@ function Dungeon:update(dt)
     else
         
         -- still update the player animation if we're shifting rooms
-        self.player.currentAnimation:update(dt)
+        if self.player.currentAnimation then
+            self.player.currentAnimation:update(dt)
+        end
     end
 end
 

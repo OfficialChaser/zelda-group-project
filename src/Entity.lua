@@ -42,6 +42,19 @@ function Entity:init(def)
     self.flashTimer = 0
 
     self.dead = false
+
+    -- ensure there's a currentAnimation to avoid nil deref in render
+    if self.animations then
+        if self.animations['idle-down'] then
+            self.currentAnimation = self.animations['idle-down']
+        else
+            -- pick first animation available
+            for k, v in pairs(self.animations) do
+                self.currentAnimation = v
+                break
+            end
+        end
+    end
 end
 
 function Entity:createAnimations(animations)

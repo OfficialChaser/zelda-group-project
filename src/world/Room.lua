@@ -81,6 +81,9 @@ function Room:generateEntities(roomsCleared)
     end
 end
 
+-- add projectiles list to room when constructed (Room:init exists earlier in file)
+-- we'll insert initialization code into Room:init if present; otherwise ensure projectiles is present in update/render paths
+
 --[[
     Randomly creates an assortment of obstacles for the player to navigate around.
 ]]
@@ -175,6 +178,42 @@ function Room:update(dt)
 
     self.player:update(dt)
 
+    -- update projectiles
+    if not self.projectiles then self.projectiles = {} end
+    for i = #self.projectiles, 1, -1 do
+        local proj = self.projectiles[i]
+        proj:update(dt)
+
+        -- remove projectile if it goes outside the visible room bounds
+        local leftBound = MAP_RENDER_OFFSET_X
+        local rightBound = VIRTUAL_WIDTH - TILE_SIZE * 2
+        local topBound = MAP_RENDER_OFFSET_Y
+        local bottomBound = VIRTUAL_HEIGHT - (VIRTUAL_HEIGHT - MAP_HEIGHT * TILE_SIZE) + MAP_RENDER_OFFSET_Y - TILE_SIZE
+
+        if proj.x + proj.width < leftBound or proj.x > rightBound or proj.y + proj.height < topBound or proj.y > bottomBound then
+            proj.dead = true
+        end
+
+        -- check collision with entities
+        for j = #self.entities, 1, -1 do
+            local entity = self.entities[j]
+            if not entity.dead and proj and not proj.dead and proj:collides(entity) then
+                entity:damage(proj.damage)
+                proj.dead = true
+                if entity.health <= 0 then
+                    self.total_enemies = self.total_enemies - 1
+                    entity.dead = true
+                    if math.random(10) == 1 then self:spawnHeart(entity.x, entity.y) end
+                end
+                break
+            end
+        end
+
+        if proj.dead then
+            table.remove(self.projectiles, i)
+        end
+    end
+
     for i = #self.entities, 1, -1 do
         local entity = self.entities[i]
 
@@ -214,6 +253,8 @@ function Room:update(dt)
         self:spawnSwitch()
         self.spawnedSwitch = true
     end
+
+    -- render/projectiles are updated above; they will be rendered in Room:render below
 end
 
 function Room:render()
@@ -234,6 +275,13 @@ function Room:render()
 
     for k, object in pairs(self.objects) do
         object:render(self.adjacentOffsetX, self.adjacentOffsetY)
+    end
+
+    -- render projectiles
+    if self.projectiles then
+        for k, proj in pairs(self.projectiles) do
+            proj:render(self.adjacentOffsetX, self.adjacentOffsetY)
+        end
     end
 
     for k, entity in pairs(self.entities) do

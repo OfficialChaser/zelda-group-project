@@ -89,8 +89,10 @@ end
 
 function PlayerSwingSwordState:render()
     local anim = self.player.currentAnimation
-    love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.player.x - self.player.offsetX), math.floor(self.player.y - self.player.offsetY))
+    if anim then
+        love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
+            math.floor(self.player.x - self.player.offsetX), math.floor(self.player.y - self.player.offsetY))
+    end
 
     --
     -- debug for player and hurtbox collision rects VV
