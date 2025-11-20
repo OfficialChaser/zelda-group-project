@@ -85,6 +85,7 @@ function PlayState:render()
     love.graphics.draw(gTextures['rock'], gFrames['rock'][1],
         60, 2)
 
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setFont(gFonts['small'])
     love.graphics.printf('Rooms Cleared: ' .. tostring(self.player.roomCounter), 0, 2,
         VIRTUAL_WIDTH - 4, 'right')

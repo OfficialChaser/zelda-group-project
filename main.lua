@@ -18,7 +18,7 @@
 -- Achievements: "Haha, I don't need this": Collect a heart when you're at full HP, "You were doomed from the start": die for the first time, "Dungeon Slayer": kill 100 enemies, "Strike!": kill 2 or more enemies with a single ball
 -- Score at the end (done)
 -- make bowling ball indestructible (done)
--- ball cooldown in gui
+-- ball cooldown in gui (done)
 love.graphics.setDefaultFilter('nearest', 'nearest')
 require 'src/Dependencies'
 
