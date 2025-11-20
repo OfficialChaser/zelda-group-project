@@ -199,7 +199,6 @@ function Room:update(dt)
             local entity = self.entities[j]
             if not entity.dead and proj and not proj.dead and proj:collides(entity) then
                 entity:damage(proj.damage)
-                proj.dead = true
                 if entity.health <= 0 then
                     self.total_enemies = self.total_enemies - 1
                     entity.dead = true

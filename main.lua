@@ -13,12 +13,11 @@
 -- Counter for how many levels passed (done)
 -- Enemy variability (done)
 -- Longer sword (done)
--- Better hitboxes (impossible)
 -- Better music (done)
 -- Rooms can have modifiers like enemies have double speed, double health, or introduce enemy mutations
--- Achievements: "Haha, I don't need this": Collect a heart when you're at full HP, "You were doomed from the start": die for the first time, maybe a super rare collectible achievement
+-- Achievements: "Haha, I don't need this": Collect a heart when you're at full HP, "You were doomed from the start": die for the first time, "Dungeon Slayer": kill 100 enemies, "Strike!": kill 2 or more enemies with a single ball
 -- Score at the end (done)
--- make bowling ball indestructible
+-- make bowling ball indestructible (done)
 -- ball cooldown in gui
 love.graphics.setDefaultFilter('nearest', 'nearest')
 require 'src/Dependencies'

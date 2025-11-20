@@ -73,6 +73,18 @@ function PlayState:render()
         healthLeft = healthLeft - 2
     end
 
+    if self.player.throwTimer > 0 then
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.setFont(gFonts['small'])
+        love.graphics.printf(string.format("%.1f", self.player.throwTimer), self.player.x - 17.5, self.player.y - 7, 50, 'center')
+        love.graphics.setColor(1, 1, 1, .7)
+    else
+        love.graphics.setColor(1, 1, 1, 1)
+    end
+    
+    love.graphics.draw(gTextures['rock'], gFrames['rock'][1],
+        60, 2)
+
     love.graphics.setFont(gFonts['small'])
     love.graphics.printf('Rooms Cleared: ' .. tostring(self.player.roomCounter), 0, 2,
         VIRTUAL_WIDTH - 4, 'right')
