@@ -44,8 +44,9 @@ gTextures = {
     ['character-swing-sword'] = love.graphics.newImage('graphics/character_swing_sword.png'),
     ['hearts'] = love.graphics.newImage('graphics/hearts.png'),
     ['switches'] = love.graphics.newImage('graphics/switches.png'),
-    ['entities'] = love.graphics.newImage('graphics/entities.png')
-    ,['achievement'] = love.graphics.newImage('graphics/achievement (2).png')
+    ['entities'] = love.graphics.newImage('graphics/entities.png'),
+    ['achievement_die'] = love.graphics.newImage('graphics/achievement (1).png'),
+    ['achievement_heart'] = love.graphics.newImage('graphics/achievement (2).png')
 }
 
 -- optional rock texture (16x16)
